@@ -3,18 +3,24 @@
  * Uses an array of Species objects to store and simulate species data
  */
 public class WildlifeSimulator {
-    private Species[] species;
-    private int speciesCount;
+    public Species[] species;
+    public int speciesCount = 0;
     
     public WildlifeSimulator(int maxSpecies) {
-        //TODO
+        species = new Species[maxSpecies];
     }
     
     /**
      * Add a species to the simulator
      */
     public void addSpecies(Species s) {
-        //TODO
+        if(speciesCount == 0){
+            species[0] = s;
+            speciesCount++;
+        } else {
+        species[speciesCount-1] = s;
+        speciesCount++;
+        }
     }
     
     /**
@@ -35,8 +41,7 @@ public class WildlifeSimulator {
      * Get species at given index
      */
     public Species getSpecies(int index) {
-        //TODO
-        return null;
+        return species[index];
     }
     
     /**
@@ -49,25 +54,50 @@ public class WildlifeSimulator {
     /**
      * Get total wildlife count across all species
      */
+    public String toString(){
+        String m = "";
+        for(int i = 0; i< speciesCount-1;i++){
+            if(species[i] != null){
+            m +=species[i].toString() + "\n";
+            } else{
+                break;
+            }
+        }
+        return m;
+
+    }
     public double getTotalPopulation() {
-        //TODO
-        return 0.0;
+        double x = 0;
+        for(int i = 0; i < speciesCount; i++){
+            x = x + species[i].getPopulation();
+        }
+        return x;
     }
     
     /**
      * Find the species with largest population
      */
     public int getMostPopulousIndex() {
-        //TODO
-        return -1;
+        int x = 0;
+        for(int i = 0; i< speciesCount;i++){
+            if(species[i].getPopulation()>x){
+                x = i;
+            }
+        }
+        return x;
     }
     
     /**
      * Find the species with smallest population (most endangered)
      */
     public int getMostEndangeredIndex() {
-        //TODO
-        return -1;
+        int x = 1000000;
+        for(int i = 0; i< speciesCount;i++){
+            if(species[i].getPopulation() < x){
+                x = i;
+            }
+        }
+        return x;
     }
     
     public int getSpeciesCount() {
