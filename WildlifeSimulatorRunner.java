@@ -31,27 +31,34 @@ public class WildlifeSimulatorRunner {
         System.out.println("------------------");
         for(Species s: simulator.species){
             if(s!= null){
-            System.out.println(s.getPopulation());
+            System.out.println(s.toString());
             }
         }
         // Run simulation for 10 years and record data year-by-year
         int simulationYears = 10;
-        
-        
+        simulator.simulate(simulationYears);
+        System.out.println("FINAL POPULATIONS:");
+        System.out.println("------------------");
         // Display final populations
-        
-        
+        for(Species s: simulator.species){
+            if(s!= null){
+            System.out.println(s.toString());
+            }
+        }
         // Display statistics
         System.out.println("\n\nSIMULATION STATISTICS:");
         System.out.println("------------------");
         //int mostPopulous = simulator.getMostPopulousIndex();
         //int mostEndangered = simulator.getMostEndangeredIndex();
         
-        
+        System.out.println("Total Population: " + simulator.getTotalPopulation());
+        System.out.println("Index of Highest Population: " + simulator.getMostPopulousIndex());
+        System.out.println("Index of lowest population: " + simulator.getMostEndangeredIndex());
+        System.out.println("Species Count: " + simulator.getSpeciesCount());
                 
         System.out.println("\nSimulation complete!");
     }
-    
+
     /**
      * Load species data from CSV file into the simulator
      * CSV format: name,population,birthRate,deathRate,capacity,location
@@ -80,7 +87,7 @@ public class WildlifeSimulatorRunner {
      * Writes: simulation_year,species,population,population_change
      */
     private static void simulateAndRecordData(WildlifeSimulator simulator, int years, String filename) {
-        //TODO
+        
     
     }    
     
