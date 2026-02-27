@@ -91,7 +91,7 @@ public class WildlifeSimulator {
         int x = 0;
         for(int i = 0; i< speciesCount;i++){
             if(species[i]!= null){
-                if((int)species[i].getPopulation()>x){
+                if((int)species[i].getPopulation()>species[x].getPopulation()){
                     x = i;
                 }
             }
@@ -102,10 +102,10 @@ public class WildlifeSimulator {
      * Find the species with smallest population (most endangered)
      */
     public int getMostEndangeredIndex() {
-        int x = 1000000;
+        int x = 0;
         for(int i = 0; i< speciesCount;i++){
             if(species[i]!=null){
-                if((int)species[i].getPopulation() < x){
+                if((int)species[i].getPopulation() < species[x].getPopulation()){
                     x = i;
                 }
             }
