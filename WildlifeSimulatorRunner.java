@@ -2,6 +2,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
+import java.io.PrintWriter;
+import java.io.FileWriter;
 /**
  * WildlifeSimulatorApp - Main program for the Wildlife Population Simulator
  * 
@@ -57,6 +59,7 @@ public class WildlifeSimulatorRunner {
         System.out.println("Species Count: " + simulator.getSpeciesCount());
                 
         System.out.println("\nSimulation complete!");
+        simulateAndRecordData(simulator, simulationYears, "species-data1.csv");
     }
 
     /**
@@ -86,8 +89,21 @@ public class WildlifeSimulatorRunner {
      * Simulate year-by-year and record data to CSV file
      * Writes: simulation_year,species,population,population_change
      */
-    private static void simulateAndRecordData(WildlifeSimulator simulator, int years, String filename) {
-        
+    private static void simulateAndRecordData(WildlifeSimulator simulator, int years, String filename) throws IOException, FileNotFoundException {
+        File f = new File(filename);
+        Scanner s = new Scanner(f);
+        String filePath = filename;
+        try(PrintWriter writer = new PrintWriter(new FileWriter(filePath))){
+            for(Species y : simulator.species){
+                if(y!=null){
+                String line = String.join(",",(y.getName()), Long.toString(y.getPopulation()),Double.toString(y.getBirthRate()),Double.toString(y.getDeathRate()),y.getLocation());
+                writer.println(line);
+                }
+            }
+        } catch(IOException e){
+            System.out.println("An error occurred");
+            e.printStackTrace();
+        }
     
     }    
     
