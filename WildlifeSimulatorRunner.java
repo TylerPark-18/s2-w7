@@ -66,7 +66,7 @@ public class WildlifeSimulatorRunner {
      * Load species data from CSV file into the simulator
      * CSV format: name,population,birthRate,deathRate,capacity,location
      */
-    private static void loadSpeciesFromCSV(WildlifeSimulator simulator, String filename) throws IOException, FileNotFoundException {
+    public static void loadSpeciesFromCSV(WildlifeSimulator simulator, String filename) throws IOException, FileNotFoundException {
         File f = new File(filename); 
         Scanner s = new Scanner(f);
         s.nextLine();
@@ -90,7 +90,7 @@ public class WildlifeSimulatorRunner {
      * Simulate year-by-year and record data to CSV file
      * Writes: simulation_year,species,population,population_change
      */
-    private static void simulateAndRecordData(WildlifeSimulator simulator, int years, String filename) throws IOException, FileNotFoundException {
+    public static void simulateAndRecordData(WildlifeSimulator simulator, int years, String filename) throws IOException, FileNotFoundException {
         File f = new File(filename);
         Scanner s = new Scanner(f);
         String filePath = filename;
