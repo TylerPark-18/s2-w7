@@ -1,9 +1,9 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Scanner;
-import java.io.PrintWriter;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 /**
  * WildlifeSimulatorApp - Main program for the Wildlife Population Simulator
  * 
@@ -83,6 +83,7 @@ public class WildlifeSimulatorRunner {
                 continue;
             }
         }
+        s.close();
     }
     
     /**
